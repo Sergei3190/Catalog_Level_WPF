@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Catalog_Level_WPF.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Catalog_Level_WPFStoreContainer">
+    <EntitySet Name="Aggregates" EntityType="Catalog_Level_WPF.Store.Aggregates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Catalog_level" EntityType="Catalog_Level_WPF.Store.Catalog_level" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Catalogs" EntityType="Catalog_Level_WPF.Store.Catalogs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Models" EntityType="Catalog_Level_WPF.Store.Models" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_dbo_Aggregates_dbo_Catalogs_CatalogID" Association="Catalog_Level_WPF.Store.FK_dbo_Aggregates_dbo_Catalogs_CatalogID">
+      <End Role="Catalogs" EntitySet="Catalogs" />
+      <End Role="Aggregates" EntitySet="Aggregates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Models_dbo_Aggregates_AggregateID" Association="Catalog_Level_WPF.Store.FK_dbo_Models_dbo_Aggregates_AggregateID">
+      <End Role="Aggregates" EntitySet="Aggregates" />
+      <End Role="Models" EntitySet="Models" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Aggregates">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CatalogID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Catalog_level">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="true" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Catalogs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Models">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="AggregateID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_Aggregates_dbo_Catalogs_CatalogID">
+    <End Role="Catalogs" Type="Catalog_Level_WPF.Store.Catalogs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Aggregates" Type="Catalog_Level_WPF.Store.Aggregates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogs">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Aggregates">
+        <PropertyRef Name="CatalogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Models_dbo_Aggregates_AggregateID">
+    <End Role="Aggregates" Type="Catalog_Level_WPF.Store.Aggregates" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Models" Type="Catalog_Level_WPF.Store.Models" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aggregates">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Models">
+        <PropertyRef Name="AggregateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Catalog_Level_WPF" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Catalog_Level_WPFContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aggregates" EntityType="Catalog_Level_WPF.Aggregates" />
+          <EntitySet Name="Catalog_level" EntityType="Catalog_Level_WPF.Catalog_level" />
+          <EntitySet Name="Catalogs" EntityType="Catalog_Level_WPF.Catalogs" />
+          <EntitySet Name="Models" EntityType="Catalog_Level_WPF.Models" />
+          <AssociationSet Name="FK_dbo_Aggregates_dbo_Catalogs_CatalogID" Association="Catalog_Level_WPF.FK_dbo_Aggregates_dbo_Catalogs_CatalogID">
+            <End Role="Catalogs" EntitySet="Catalogs" />
+            <End Role="Aggregates" EntitySet="Aggregates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Models_dbo_Aggregates_AggregateID" Association="Catalog_Level_WPF.FK_dbo_Models_dbo_Aggregates_AggregateID">
+            <End Role="Aggregates" EntitySet="Aggregates" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Aggregates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CatalogID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Catalogs" Relationship="Catalog_Level_WPF.FK_dbo_Aggregates_dbo_Catalogs_CatalogID" FromRole="Aggregates" ToRole="Catalogs" />
+          <NavigationProperty Name="Models" Relationship="Catalog_Level_WPF.FK_dbo_Models_dbo_Aggregates_AggregateID" FromRole="Aggregates" ToRole="Models" />
+        </EntityType>
+        <EntityType Name="Catalog_level">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Catalogs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Aggregates" Relationship="Catalog_Level_WPF.FK_dbo_Aggregates_dbo_Catalogs_CatalogID" FromRole="Catalogs" ToRole="Aggregates" />
+        </EntityType>
+        <EntityType Name="Models">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AggregateID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Aggregates" Relationship="Catalog_Level_WPF.FK_dbo_Models_dbo_Aggregates_AggregateID" FromRole="Models" ToRole="Aggregates" />
+        </EntityType>
+        <Association Name="FK_dbo_Aggregates_dbo_Catalogs_CatalogID">
+          <End Type="Catalog_Level_WPF.Catalogs" Role="Catalogs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Catalog_Level_WPF.Aggregates" Role="Aggregates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalogs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Aggregates">
+              <PropertyRef Name="CatalogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Models_dbo_Aggregates_AggregateID">
+          <End Type="Catalog_Level_WPF.Aggregates" Role="Aggregates" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Catalog_Level_WPF.Models" Role="Models" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aggregates">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="AggregateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Catalog_Level_WPFStoreContainer" CdmEntityContainer="Catalog_Level_WPFContainer">
+    <EntitySetMapping Name="Aggregates">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalog_Level_WPF.Aggregates)">
+        <MappingFragment StoreEntitySet="Aggregates">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CatalogID" ColumnName="CatalogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Catalog_level">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalog_Level_WPF.Catalog_level)">
+        <MappingFragment StoreEntitySet="Catalog_level">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Catalogs">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalog_Level_WPF.Catalogs)">
+        <MappingFragment StoreEntitySet="Catalogs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Models">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalog_Level_WPF.Models)">
+        <MappingFragment StoreEntitySet="Models">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AggregateID" ColumnName="AggregateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

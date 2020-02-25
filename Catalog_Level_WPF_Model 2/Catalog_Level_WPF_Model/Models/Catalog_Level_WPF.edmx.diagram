@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="116f4d2b8c5b494f85ba358ad8a7f6e1" Name="Diagram1" >
+        <EntityTypeShape EntityType="Catalog_Level_WPF.Aggregates" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="Catalog_Level_WPF.Catalog_level" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Catalog_Level_WPF.Catalogs" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="Catalog_Level_WPF.Models" Width="1.5" PointX="5.25" PointY="1" />
+        <AssociationConnector Association="Catalog_Level_WPF.FK_dbo_Aggregates_dbo_Catalogs_CatalogID" />
+        <AssociationConnector Association="Catalog_Level_WPF.FK_dbo_Models_dbo_Aggregates_AggregateID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
