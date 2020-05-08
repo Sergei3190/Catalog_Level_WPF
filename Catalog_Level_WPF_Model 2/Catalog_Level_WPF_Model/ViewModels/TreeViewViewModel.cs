@@ -21,18 +21,18 @@ namespace Catalog_Level_WPF_Model.ViewModels
         private ObservableCollection<CatalogLevelViewModel> catalogLevelViewModels;
         private string valueTextBox;
 
-        public ObservableCollection<CatalogLevelViewModel> CatalogLevelViewModels 
-        { 
+        public ObservableCollection<CatalogLevelViewModel> CatalogLevelViewModels
+        {
             get => catalogLevelViewModels;
-            set 
-            { 
+            set
+            {
                 catalogLevelViewModels = value;
-                OnPropertyChanged(); 
+                OnPropertyChanged();
             }
         }
 
-        public string ValueTextBox 
-        { 
+        public string ValueTextBox
+        {
             get => valueTextBox;
             set
             {
@@ -47,11 +47,11 @@ namespace Catalog_Level_WPF_Model.ViewModels
         public ICommand SaveNodeСhanges { get; private set; }
         public ICommand DeleteNode { get; private set; }
         public ICommand AddNode { get; private set; }
-  
+
 
         public TreeViewViewModel()
         {
-            DataInitializer();           
+            DataInitializer();
             LoadData();
             LoadCommand();
         }
@@ -95,7 +95,7 @@ namespace Catalog_Level_WPF_Model.ViewModels
         void SaveItemChanges(object obj)
         {
             var item = CatalogLevelViewModel.SelectedItem;
-            if(item is CatalogLevelViewModel viewModel)
+            if (item is CatalogLevelViewModel viewModel)
             {
                 UpdateData(viewModel);
             }
@@ -103,11 +103,11 @@ namespace Catalog_Level_WPF_Model.ViewModels
 
         void DeleteItem(object obj)
         {
-            var item  = CatalogLevelViewModel.SelectedItem;
+            var item = CatalogLevelViewModel.SelectedItem;
             if (item is CatalogLevelViewModel viewModel)
             {
                 RemoveData(viewModel);
-            }            
+            }
         }
 
         void AddItem(object obj)

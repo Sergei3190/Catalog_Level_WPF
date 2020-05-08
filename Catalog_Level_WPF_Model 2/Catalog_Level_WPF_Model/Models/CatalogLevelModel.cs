@@ -12,6 +12,7 @@ namespace Catalog_Level_WPF_Model.Models
         public static void DataInitializer()
         {
             var connect = new Catalog_Level_WPFContainer();
+
             if (!connect.Catalog_level.Any<Catalog_level>())
             {
                 DataInitialization.Seed(connect);
@@ -66,7 +67,7 @@ namespace Catalog_Level_WPF_Model.Models
 
                 var catalogLevels = connect.Catalog_level.ToList();
 
-                return catalogLevels;                
+                return catalogLevels;
             }
         }
 
@@ -79,7 +80,7 @@ namespace Catalog_Level_WPF_Model.Models
 
                 foreach (var item in connect.Catalog_level)
                 {
-                    if(item.ID == viewModel.ID)
+                    if (item.ID == viewModel.ID)
                     {
                         item.Name = viewModel.Name;
                     }
@@ -98,4 +99,3 @@ namespace Catalog_Level_WPF_Model.Models
         }
     }
 }
- 

@@ -19,7 +19,7 @@ namespace Catalog_Level_WPF_Model
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public DelegateCommand(Action<object> _execute, Func<object,bool> _canExecute = null)
+        public DelegateCommand(Action<object> _execute, Func<object, bool> _canExecute = null)
         {
             execute = _execute;
             canExecute = _canExecute;

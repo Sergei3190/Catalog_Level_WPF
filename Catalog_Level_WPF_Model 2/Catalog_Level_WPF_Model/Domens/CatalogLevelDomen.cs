@@ -9,7 +9,7 @@ using Catalog_Level_WPF_Model.ViewModels;
 
 namespace Catalog_Level_WPF_Model.Domens
 {
-    public class CatalogLevelDomen 
+    public class CatalogLevelDomen
     {
         public static ObservableCollection<CatalogLevelViewModel> GetCatalogLevelViewModels(List<Catalog_level> catalog_Levels)
         {

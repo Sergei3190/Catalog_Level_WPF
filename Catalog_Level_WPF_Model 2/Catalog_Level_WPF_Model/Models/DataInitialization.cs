@@ -10,7 +10,7 @@ using Catalog_Level_WPF_Model.Domens;
 
 namespace Catalog_Level_WPF_Model.Models
 {
-    public class DataInitialization 
+    public class DataInitialization
     {
         private static List<CL_Consolidation> cl_Consol = new List<CL_Consolidation>();
 
@@ -144,5 +144,5 @@ namespace Catalog_Level_WPF_Model.Models
 
             connect.SaveChanges();
         }
-    }  
+    }
 }
